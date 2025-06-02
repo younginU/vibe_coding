@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>작동원리 - Vibe Coding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900" x-data="{ darkMode: false, mobileMenu: false }">
+    <!-- 스크롤 진행률 표시 -->
+    <div class="fixed top-0 left-0 w-full h-1 z-50">
+        <div class="scroll-progress h-full bg-blue-600"></div>
+    </div>
+
+    <!-- 헤더 -->
+    <header class="fixed w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm z-40">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="../index.html" class="text-2xl font-bold text-gray-800 dark:text-white">
+                    Vibe Coding
+                </a>
+                <!-- 데스크톱 메뉴 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="./operating-principles.html" class="nav-link">작동원리</a>
+                    <a href="./future-of-development.html" class="nav-link">개발의 미래</a>
+                    <a href="./future-of-developers.html" class="nav-link">개발자의 미래</a>
+                    <a href="./productivity.html" class="nav-link">생산성</a>
+                    <a href="../about/company.html" class="nav-link">회사 소개</a>
+                </div>
+                <!-- 다크 모드 토글 & 모바일 메뉴 버튼 -->
+                <div class="flex items-center space-x-4">
+                    <button @click="darkMode.toggle()" class="dark-mode-toggle">
+                        <span x-show="!darkMode.dark">🌙</span>
+                        <span x-show="darkMode.dark">☀️</span>
+                    </button>
+                    <button @click="mobileMenu = !mobileMenu" class="md:hidden">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- 모바일 메뉴 -->
+            <div x-show="mobileMenu" 
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 -translate-y-4"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="opacity-100 translate-y-0"
+                 x-transition:leave-end="opacity-0 -translate-y-4"
+                 class="md:hidden mt-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="./operating-principles.html" class="nav-link">작동원리</a>
+                    <a href="./future-of-development.html" class="nav-link">개발의 미래</a>
+                    <a href="./future-of-developers.html" class="nav-link">개발자의 미래</a>
+                    <a href="./productivity.html" class="nav-link">생산성</a>
+                    <a href="../about/company.html" class="nav-link">회사 소개</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 블로그 포스트 -->
+    <article class="pt-32 pb-20">
+        <div class="container">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-8">바이브코딩의 작동원리</h1>
+                
+                <section class="prose prose-lg dark:prose-invert max-w-none">
+                    <h2>소개</h2>
+                    <p>바이브코딩은 현대 소프트웨어 개발의 핵심 원리를 이해하고 실천하는 새로운 방식의 코딩 교육 플랫폼입니다.</p>
+
+                    <h2>핵심 원리</h2>
+                    
+                    <h3>1. 실시간 피드백 시스템</h3>
+                    <ul>
+                        <li>코드 작성 즉시 실행 결과 확인</li>
+                        <li>AI 기반 코드 분석 및 개선 제안</li>
+                        <li>실시간 멘토링 시스템</li>
+                    </ul>
+
+                    <h3>2. 적응형 학습 경로</h3>
+                    <ul>
+                        <li>개인별 학습 속도와 스타일 분석</li>
+                        <li>맞춤형 커리큘럼 자동 조정</li>
+                        <li>진도별 난이도 최적화</li>
+                    </ul>
+
+                    <h3>3. 실전 중심 학습</h3>
+                    <ul>
+                        <li>실제 프로젝트 기반 학습</li>
+                        <li>현업 개발자의 코드 리뷰</li>
+                        <li>실시간 협업 도구 활용</li>
+                    </ul>
+
+                    <h3>4. 통합 개발 환경</h3>
+                    <ul>
+                        <li>클라우드 기반 개발 환경</li>
+                        <li>자동화된 테스트 환경</li>
+                        <li>버전 관리 시스템 통합</li>
+                    </ul>
+
+                    <h2>기술 스택</h2>
+                    <ul>
+                        <li>프론트엔드: React, Vue.js, Angular</li>
+                        <li>백엔드: Node.js, Python, Java</li>
+                        <li>데이터베이스: MongoDB, PostgreSQL</li>
+                        <li>클라우드: AWS, Google Cloud</li>
+                    </ul>
+
+                    <h2>학습 효과</h2>
+                    <ul>
+                        <li>빠른 기술 습득</li>
+                        <li>실무 경험 축적</li>
+                        <li>협업 능력 향상</li>
+                        <li>문제 해결 능력 개발</li>
+                    </ul>
+
+                    <h1>AI 코딩 어시스턴트의 작동 원리</h1>
+
+                    <h2>핵심 아키텍처</h2>
+
+                    <h3>1. 컨텍스트 이해 시스템</h3>
+                    <h4>코드베이스 인덱싱</h4>
+                    <ul>
+                        <li>효율적인 코드 검색을 위한 벡터 데이터베이스 활용</li>
+                        <li>실시간 코드 분석 및 의미 추출</li>
+                        <li>파일 시스템 구조와 의존성 파악</li>
+                    </ul>
+                    <h4>컨텍스트 관리</h4>
+                    <ul>
+                        <li>대화 기록과 작업 상태 추적</li>
+                        <li>사용자 의도와 목표 이해</li>
+                        <li>프로젝트 특성에 맞는 컨텍스트 구성</li>
+                    </ul>
+
+                    <h3>2. 지능형 코드 처리</h3>
+                    <h4>코드 분석</h4>
+                    <ul>
+                        <li>AST(Abstract Syntax Tree) 기반 코드 파싱</li>
+                        <li>정적 분석을 통한 코드 구조 이해</li>
+                        <li>의미론적 코드 검색 및 참조</li>
+                    </ul>
+                    <h4>코드 생성 및 수정</h4>
+                    <ul>
+                        <li>컨텍스트 기반 코드 제안</li>
+                        <li>자동 오류 수정 및 최적화</li>
+                        <li>일관된 코딩 스타일 유지</li>
+                    </ul>
+
+                    <h3>3. 상호작용 시스템</h3>
+                    <h4>자연어 처리</h4>
+                    <ul>
+                        <li>개발 관련 전문 용어 이해</li>
+                        <li>모호한 요청의 명확화</li>
+                        <li>문맥에 맞는 응답 생성</li>
+                    </ul>
+                    <h4>도구 통합</h4>
+                    <ul>
+                        <li>버전 관리 시스템 연동</li>
+                        <li>빌드 및 테스트 도구 활용</li>
+                        <li>IDE 기능과의 통합</li>
+                    </ul>
+
+                    <h2>작동 프로세스</h2>
+
+                    <h3>1. 초기화 단계</h3>
+                    <ul>
+                        <li>코드베이스 스캔 및 인덱싱</li>
+                        <li>프로젝트 설정 분석</li>
+                        <li>개발 환경 구성 확인</li>
+                    </ul>
+
+                    <h3>2. 상호작용 단계</h3>
+                    <h4>사용자 입력 분석</h4>
+                    <ul>
+                        <li>요청 의도 파악</li>
+                        <li>필요한 컨텍스트 수집</li>
+                        <li>작업 범위 결정</li>
+                    </ul>
+                    <h4>작업 실행</h4>
+                    <ul>
+                        <li>관련 코드 검색</li>
+                        <li>해결책 생성</li>
+                        <li>변경사항 적용</li>
+                    </ul>
+
+                    <h3>3. 피드백 및 개선</h3>
+                    <ul>
+                        <li>변경 결과 검증</li>
+                        <li>오류 감지 및 수정</li>
+                        <li>사용자 피드백 반영</li>
+                    </ul>
+
+                    <h2>핵심 기술 요소</h2>
+
+                    <h3>1. 대규모 언어 모델(LLM)</h3>
+                    <ul>
+                        <li>코드 이해 및 생성</li>
+                        <li>자연어 처리</li>
+                        <li>컨텍스트 기반 추론</li>
+                    </ul>
+
+                    <h3>2. 검색 및 인덱싱</h3>
+                    <ul>
+                        <li>벡터 데이터베이스</li>
+                        <li>시맨틱 검색</li>
+                        <li>효율적인 코드 탐색</li>
+                    </ul>
+
+                    <h3>3. 개발 도구 통합</h3>
+                    <ul>
+                        <li>IDE 플러그인</li>
+                        <li>버전 관리</li>
+                        <li>빌드 시스템</li>
+                    </ul>
+
+                    <h2>향후 발전 방향</h2>
+
+                    <h3>1. 협업 지원 강화</h3>
+                    <ul>
+                        <li>다중 사용자 지원</li>
+                        <li>코드 리뷰 자동화</li>
+                        <li>지식 공유 시스템</li>
+                    </ul>
+
+                    <h3>2. 학습 및 적응</h3>
+                    <ul>
+                        <li>프로젝트별 특화 학습</li>
+                        <li>사용자 선호도 적응</li>
+                        <li>지속적 성능 개선</li>
+                    </ul>
+
+                    <h3>3. 보안 및 신뢰성</h3>
+                    <ul>
+                        <li>코드 품질 보장</li>
+                        <li>보안 취약점 감지</li>
+                        <li>안정적 변경 관리</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </article>
+
+    <!-- 푸터 -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Vibe Coding</h3>
+                    <p class="text-gray-400">
+                        AI 시대의 개발 혁신을 선도합니다
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">블로그</h3>
+                    <ul class="space-y-2">
+                        <li><a href="./operating-principles.html" class="footer-link">작동원리</a></li>
+                        <li><a href="./future-of-development.html" class="footer-link">개발의 미래</a></li>
+                        <li><a href="./future-of-developers.html" class="footer-link">개발자의 미래</a></li>
+                        <li><a href="./productivity.html" class="footer-link">생산성</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">회사</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../about/company.html" class="footer-link">회사 소개</a></li>
+                        <li><a href="../about/leadership.html" class="footer-link">리더십</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Vibe Coding. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html> 
