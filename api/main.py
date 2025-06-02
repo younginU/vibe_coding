@@ -7,9 +7,20 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
 from dotenv import load_dotenv
+import logging
+
+# 로깅 설정
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # 환경 변수 로드
 load_dotenv()
+
+# 환경 변수 확인
+required_env_vars = ["SMTP_SERVER", "SMTP_PORT", "SMTP_USERNAME", "SMTP_PASSWORD", "CONTACT_EMAIL"]
+for var in required_env_vars:
+    if not os.getenv(var):
+        logger.error(f"Missing required environment variable: {var}")
 
 app = FastAPI(title="Vibe Coding Contact API")
 
@@ -35,6 +46,12 @@ class ContactForm(BaseModel):
 @app.post("/api/contact")
 async def send_contact_email(contact: ContactForm):
     try:
+        # 환경 변수 로깅
+        logger.info("Attempting to send email with following configuration:")
+        logger.info(f"SMTP Server: {os.getenv('SMTP_SERVER')}")
+        logger.info(f"From: {os.getenv('SMTP_USERNAME')}")
+        logger.info(f"To: {os.getenv('CONTACT_EMAIL')}")
+
         # 이메일 메시지 생성
         message = MIMEMultipart()
         message["From"] = os.getenv("SMTP_USERNAME")
@@ -54,22 +71,35 @@ async def send_contact_email(contact: ContactForm):
         
         message.attach(MIMEText(body, "plain"))
 
-        # SMTP 서버 설정 및 이메일 전송
-        await aiosmtplib.send(
-            message,
-            hostname=os.getenv("SMTP_SERVER"),
-            port=int(os.getenv("SMTP_PORT", "587")),
-            username=os.getenv("SMTP_USERNAME"),
-            password=os.getenv("SMTP_PASSWORD"),
-            use_tls=True
-        )
+        try:
+            # SMTP 클라이언트 생성
+            smtp = aiosmtplib.SMTP(hostname=os.getenv("SMTP_SERVER"), port=465, use_tls=True)
+            
+            # 연결 및 로그인
+            await smtp.connect()
+            await smtp.login(os.getenv("SMTP_USERNAME"), os.getenv("SMTP_PASSWORD"))
+            
+            # 이메일 전송
+            await smtp.send_message(message)
+            
+            # 연결 종료
+            await smtp.quit()
+            
+            logger.info("Email sent successfully")
+            return {"status": "success", "message": "문의가 성공적으로 전송되었습니다."}
 
-        return {"status": "success", "message": "문의가 성공적으로 전송되었습니다."}
+        except aiosmtplib.SMTPException as smtp_error:
+            logger.error(f"SMTP Error: {str(smtp_error)}")
+            raise HTTPException(
+                status_code=500,
+                detail=f"SMTP 오류: {str(smtp_error)}"
+            )
 
     except Exception as e:
+        logger.error(f"Unexpected error: {str(e)}")
         raise HTTPException(
             status_code=500,
-            detail="이메일 전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요."
+            detail=f"이메일 전송 중 오류가 발생했습니다: {str(e)}"
         )
 
 @app.get("/api/health")
