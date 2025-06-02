@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     message: document.getElementById('message').value
                 };
 
-                // 상대 경로로 API 호출
-                const response = await fetch('/api/contact', {
+                // Vercel 배포 URL로 API 호출
+                const response = await fetch('https://vibe-coding.vercel.app/api/contact', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="block sm:inline">${error.message}</span>
                     </div>
                 `;
+                console.error('API Error:', error);  // 에러 로깅 추가
             } finally {
                 // 버튼 상태 복구
                 submitButton.disabled = false;
