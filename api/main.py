@@ -16,7 +16,7 @@ app = FastAPI(title="Vibe Coding Contact API")
 # CORS 미들웨어 설정
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # 프로덕션에서는 실제 도메인으로 변경
+    allow_origins=["https://younginu.github.io"],  # GitHub Pages 도메인
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
