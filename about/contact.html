@@ -72,7 +72,7 @@
                         빠른 시일 내에 답변드리겠습니다.
                     </p>
 
-                    <form id="contactForm" class="space-y-6" onsubmit="return handleSubmit(event)">
+                    <form id="contactForm" class="space-y-6">
                         <div>
                             <label for="name" class="block text-neon-blue mb-2">이름</label>
                             <input type="text" id="name" name="name" required
@@ -92,8 +92,8 @@
                         </div>
 
                         <div>
-                            <label for="type" class="block text-neon-purple mb-2">문의유형</label>
-                            <select id="type" name="type" required
+                            <label for="inquiryType" class="block text-neon-purple mb-2">문의유형</label>
+                            <select id="inquiryType" name="inquiryType" required
                                     class="w-full bg-gray-800 border border-neon-purple rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-neon-purple">
                                 <option value="">선택해주세요</option>
                                 <option value="general">일반 문의</option>
@@ -155,5 +155,6 @@
     </footer>
 
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/contact.js"></script>
 </body>
 </html> 
