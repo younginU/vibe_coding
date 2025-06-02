@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body class="bg-gray-50 dark:bg-gray-900" x-data="{ darkMode: false, mobileMenu: false }">
+<body class="bg-gray-50 dark:bg-gray-900" x-data="{ mobileMenu: false }">
     <!-- 스크롤 진행률 표시 -->
     <div class="fixed top-0 left-0 w-full h-1 z-50">
         <div class="scroll-progress h-full bg-blue-600"></div>
@@ -19,7 +19,7 @@
     <header class="fixed w-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm z-40">
         <nav class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="../index.html" class="text-2xl font-bold text-gray-800 dark:text-white">
+                <a href="../index.html" class="text-2xl font-bold text-gray-800 dark:text-white neon-text">
                     Vibe Coding
                 </a>
                 <!-- 데스크톱 메뉴 -->
@@ -29,13 +29,10 @@
                     <a href="./future-of-developers.html" class="nav-link">개발자의 미래</a>
                     <a href="./productivity.html" class="nav-link">생산성</a>
                     <a href="../about/company.html" class="nav-link">회사 소개</a>
+                    <a href="../about/contact.html" class="nav-link">Contact</a>
                 </div>
-                <!-- 다크 모드 토글 & 모바일 메뉴 버튼 -->
-                <div class="flex items-center space-x-4">
-                    <button @click="darkMode.toggle()" class="dark-mode-toggle">
-                        <span x-show="!darkMode.dark">🌙</span>
-                        <span x-show="darkMode.dark">☀️</span>
-                    </button>
+                <!-- 모바일 메뉴 버튼 -->
+                <div class="flex items-center">
                     <button @click="mobileMenu = !mobileMenu" class="md:hidden">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
@@ -51,13 +48,14 @@
                  x-transition:leave="transition ease-in duration-150"
                  x-transition:leave-start="opacity-100 translate-y-0"
                  x-transition:leave-end="opacity-0 -translate-y-4"
-                 class="md:hidden mt-4">
+                 class="md:hidden mt-4 mobile-menu">
                 <div class="flex flex-col space-y-4">
                     <a href="./operating-principles.html" class="nav-link">작동원리</a>
                     <a href="./future-of-development.html" class="nav-link">개발의 미래</a>
                     <a href="./future-of-developers.html" class="nav-link">개발자의 미래</a>
                     <a href="./productivity.html" class="nav-link">생산성</a>
                     <a href="../about/company.html" class="nav-link">회사 소개</a>
+                    <a href="../about/contact.html" class="nav-link">Contact</a>
                 </div>
             </div>
         </nav>

@@ -108,4 +108,30 @@ function debounce(func, wait) {
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', () => {
     initSearch();
-}); 
+});
+
+// 문의 양식 처리
+function handleSubmit(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    const data = {
+        name: formData.get('name'),
+        company: formData.get('company'),
+        email: formData.get('email'),
+        type: formData.get('type'),
+        message: formData.get('message')
+    };
+
+    // 여기에 실제 이메일 전송 로직 구현
+    // 예: API 엔드포인트로 데이터 전송
+    console.log('문의 데이터:', data);
+
+    // 사용자에게 성공 메시지 표시
+    alert('문의가 성공적으로 전송되었습니다. 빠른 시일 내에 답변 드리겠습니다.');
+    
+    // 폼 초기화
+    event.target.reset();
+    
+    return false;
+} 

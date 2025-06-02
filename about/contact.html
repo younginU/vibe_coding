@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>리더십 - Vibe Coding</title>
+    <title>문의하기 - Vibe Coding</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="../assets/css/style.css">
@@ -63,83 +63,58 @@
     <!-- 메인 컨텐츠 -->
     <main class="content-area pt-32 pb-20">
         <div class="container">
-            <div class="max-w-4xl mx-auto">
+            <div class="max-w-2xl mx-auto">
                 <div class="cyber-border holo-card p-8 mb-12">
-                    <h1 class="text-4xl font-bold mb-8 neon-text">리더십 팀</h1>
+                    <h1 class="text-4xl font-bold mb-8 neon-text">문의하기</h1>
                     
-                    <div class="space-y-12">
-                        <!-- CEO -->
-                        <div class="holo-card p-6">
-                            <div class="flex flex-col md:flex-row gap-8">
-                                <div class="w-full md:w-1/3">
-                                    <div class="aspect-square bg-gradient-to-br from-neon-blue to-neon-purple rounded-lg"></div>
-                                </div>
-                                <div class="w-full md:w-2/3">
-                                    <h2 class="text-2xl font-bold mb-2 neon-text">김혁신</h2>
-                                    <p class="text-neon-green mb-4">CEO & 공동창업자</p>
-                                    <p class="text-gray-300 mb-4">
-                                        AI와 소프트웨어 개발의 미래를 그리는 비전을 가진 리더.
-                                        15년간의 소프트웨어 개발 경험과 AI 연구 경력을 바탕으로
-                                        Vibe Coding의 혁신적인 제품과 서비스를 이끌고 있습니다.
-                                    </p>
-                                </div>
-                            </div>
+                    <p class="text-gray-300 mb-8">
+                        궁금한 점이 있으시거나 협업을 제안하고 싶으시다면 아래 양식을 통해 연락주세요.
+                        빠른 시일 내에 답변드리겠습니다.
+                    </p>
+
+                    <form id="contactForm" class="space-y-6" onsubmit="return handleSubmit(event)">
+                        <div>
+                            <label for="name" class="block text-neon-blue mb-2">이름</label>
+                            <input type="text" id="name" name="name" required
+                                   class="w-full bg-gray-800 border border-neon-blue rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-neon-blue">
                         </div>
 
-                        <!-- CTO -->
-                        <div class="holo-card p-6">
-                            <div class="flex flex-col md:flex-row gap-8">
-                                <div class="w-full md:w-1/3">
-                                    <div class="aspect-square bg-gradient-to-br from-neon-pink to-neon-purple rounded-lg"></div>
-                                </div>
-                                <div class="w-full md:w-2/3">
-                                    <h2 class="text-2xl font-bold mb-2 neon-text">이기술</h2>
-                                    <p class="text-neon-pink mb-4">CTO & 공동창업자</p>
-                                    <p class="text-gray-300 mb-4">
-                                        AI 모델 개발과 시스템 아키텍처 전문가.
-                                        Google과 Meta에서의 경험을 바탕으로
-                                        Vibe Coding의 기술적 혁신을 주도합니다.
-                                    </p>
-                                </div>
-                            </div>
+                        <div>
+                            <label for="company" class="block text-neon-pink mb-2">회사명</label>
+                            <input type="text" id="company" name="company"
+                                   class="w-full bg-gray-800 border border-neon-pink rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-neon-pink">
                         </div>
 
-                        <!-- Head of AI -->
-                        <div class="holo-card p-6">
-                            <div class="flex flex-col md:flex-row gap-8">
-                                <div class="w-full md:w-1/3">
-                                    <div class="aspect-square bg-gradient-to-br from-neon-green to-neon-blue rounded-lg"></div>
-                                </div>
-                                <div class="w-full md:w-2/3">
-                                    <h2 class="text-2xl font-bold mb-2 neon-text">박인공</h2>
-                                    <p class="text-neon-blue mb-4">Head of AI</p>
-                                    <p class="text-gray-300 mb-4">
-                                        AI 연구소를 이끄는 전문가.
-                                        KAIST 박사 출신으로 자연어 처리와
-                                        코드 생성 모델 개발을 주도합니다.
-                                    </p>
-                                </div>
-                            </div>
+                        <div>
+                            <label for="email" class="block text-neon-green mb-2">이메일</label>
+                            <input type="email" id="email" name="email" required
+                                   class="w-full bg-gray-800 border border-neon-green rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-neon-green">
                         </div>
 
-                        <!-- Head of Product -->
-                        <div class="holo-card p-6">
-                            <div class="flex flex-col md:flex-row gap-8">
-                                <div class="w-full md:w-1/3">
-                                    <div class="aspect-square bg-gradient-to-br from-neon-purple to-neon-pink rounded-lg"></div>
-                                </div>
-                                <div class="w-full md:w-2/3">
-                                    <h2 class="text-2xl font-bold mb-2 neon-text">정제품</h2>
-                                    <p class="text-neon-purple mb-4">Head of Product</p>
-                                    <p class="text-gray-300 mb-4">
-                                        사용자 중심의 제품 전략가.
-                                        10년간의 제품 관리 경험으로
-                                        혁신적인 개발자 도구를 디자인합니다.
-                                    </p>
-                                </div>
-                            </div>
+                        <div>
+                            <label for="type" class="block text-neon-purple mb-2">문의유형</label>
+                            <select id="type" name="type" required
+                                    class="w-full bg-gray-800 border border-neon-purple rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-neon-purple">
+                                <option value="">선택해주세요</option>
+                                <option value="general">일반 문의</option>
+                                <option value="business">사업 제휴</option>
+                                <option value="technical">기술 문의</option>
+                                <option value="support">기술 지원</option>
+                                <option value="other">기타</option>
+                            </select>
                         </div>
-                    </div>
+
+                        <div>
+                            <label for="message" class="block text-neon-blue mb-2">메시지</label>
+                            <textarea id="message" name="message" rows="6" required
+                                      class="w-full bg-gray-800 border border-neon-blue rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-neon-blue"></textarea>
+                        </div>
+
+                        <button type="submit" 
+                                class="w-full cyber-border holo-card p-4 text-neon-green hover:text-neon-blue transition-colors">
+                            보내기
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -169,6 +144,7 @@
                     <ul class="space-y-2">
                         <li><a href="./company.html" class="footer-link">회사 소개</a></li>
                         <li><a href="./leadership.html" class="footer-link">리더십</a></li>
+                        <li><a href="./contact.html" class="footer-link">Contact</a></li>
                     </ul>
                 </div>
             </div>
